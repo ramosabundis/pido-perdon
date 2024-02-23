@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Para la personita más especial de mi vida:3</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #ffe6f2; /* Fondo rosita pastel */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+    }
+    #no-btn {
+      font-size: 14px;
+    }
+    #mensaje-arriba {
+      font-size: 18px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="mensaje-arriba">Cielo, yo sabo que chingo muchas cosas, soy ingeniero, lit hasta al medio ambiente lo voy a terminar chingando, pero lo último que quiero chingar es mi relación contigo. En verdad me arrepiento de haberte tratado de esa manera en la mañana, en ningún momento quise hacerte daño; fui un tonto al comportarme de esa forma, yo te amo mucho y no quiero hacerte sentir así nunca más:(</div>
+  <div id="perdonar">
+    <h1>Perdóname, por favor</h1>
+    <img src="https://media3.giphy.com/media/jMDvwOUxvbVBkQHY1E/giphy.gif?cid=6c09b952h3pc1l0oxtvqx3sqpeixqim9xs6eshehprh4r1fw&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="Osito pidiendo perdón">
+    <p>Cuando pulses los botones, observa los cambios:</p>
+    <div id="mensaje"></div>
+    <button id="no-btn" onclick="cambiarTexto()">No</button>
+    <button id="si-btn" onclick="cambiarPagina()">Sí</button>
+  </div>
+  <div id="agradecer" style="display:none;">
+    <h1>Te amo mucho, princesita hermosa</h1>
+    <img src="https://media1.giphy.com/media/WP1Z0FfnuMuXqPvDlj/giphy.gif?cid=6c09b952wzbobse1y2ey4zdukku08flj8n7yuecr6f0198nu&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g" alt="Ositos besándose">
+    <p>Gracias por perdonarme, me haces muy feliz :)</p>
+  </div>
+
+  <script>
+    let contador = 0;
+
+    function cambiarTexto() {
+      contador++;
+      let mensaje = '';
+      switch (contador) {
+        case 1:
+          mensaje = 'Ándale';
+          break;
+        case 2:
+          mensaje = 'Por favorcito:(';
+          break;
+        case 3:
+          mensaje = 'Y te compro un elote, ¿sí?';
+          break;
+        case 4:
+          mensaje = 'A la cuenta de 3 voy a llorar';
+          break;
+        case 5:
+          mensaje = 'UNO';
+          moverBotonAleatoriamente();
+          break;
+        case 6:
+          mensaje = 'DOS';
+          break;
+        case 7:
+          mensaje = 'DOS Y MEDIO';
+          break;
+        case 8:
+          mensaje = 'DOS Y TRES CUARTOS';
+          break;
+        case 9:
+          mensaje = 'Te amo';
+          document.getElementById('no-btn').innerHTML = 'Sí';
+          document.getElementById('no-btn').setAttribute('onclick', 'cambiarPagina()');
+          break;
+        default:
+          break;
+      }
+      document.getElementById('mensaje').innerHTML = mensaje;
+    }
+
+    function cambiarPagina() {
+      document.getElementById('perdonar').style.display = 'none';
+      document.getElementById('agradecer').style.display = 'block';
+    }
+
+    function moverBotonAleatoriamente() {
+      const botonNo = document.getElementById('no-btn');
+      const anchoVentana = window.innerWidth - botonNo.offsetWidth;
+      const altoVentana = window.innerHeight - botonNo.offsetHeight;
+      const nuevoLeft = Math.floor(Math.random() * anchoVentana);
+      const nuevoTop = Math.floor(Math.random() * altoVentana);
+      botonNo.style.left = nuevoLeft + 'px';
+      botonNo.style.top = nuevoTop + 'px';
+    }
+
+    window.addEventListener('resize', () => {
+      moverBotonAleatoriamente();
+    });
+
+    moverBotonAleatoriamente(); // Para mover el botón al cargar la página
+  </script>
+</body>
+</html>
